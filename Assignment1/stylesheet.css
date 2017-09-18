@@ -1,0 +1,52 @@
+body {
+background-color: #4682b4;
+}
+
+h1 {
+background-color: #87CEEB;
+text-align: center;
+font-family: "Palatino Linotype";
+border: 2px solid red;
+border-radius: 20px;
+padding: 20px;
+width: 60%;
+display: block;
+margin: auto;
+text-shadow: 2px 2px 8px  grey;
+font-style: italic;
+}
+
+div {
+background-color: #87CEEB;
+text-align: center;
+font-family: "Palatino Linotype";
+border: 2px solid red;
+border-radius: 20px;
+padding: 30px;
+width: 30%;
+height: 300%;
+display: block;
+margin: auto;
+}
+
+input[type=text] {
+border: 2px solid red;
+border-radius: 4px;
+}
+
+input[type=number] {
+border: 2px solid red;
+border-radius: 4px;
+}
+
+input[type=password] {
+border: 2px solid red;
+border-radius: 4px;
+}
+
+input[type=submit] {
+background-color: white;
+border: 1px solid black;
+border-radius: 4px;
+cursor: pointer;
+}
