@@ -4,10 +4,27 @@
 	<head><title>CSE222 Assignment 1</title>
 		<link rel="stylesheet" type="text/css" href="stylesheet.css">
 	</head>
-	<body><br>
-		<div>
+	<body>
+		<div class="module">
 			<h1> Dashboard</h1>
-		</div><br>
+		</div>
+		<div class="module">
+		  <select>
+			<option>Ethan's Garage Door</option>
+			<option>Jack's Garage Door</option>
+			<option>Add New...</option>
+		  </select>
+		</div>
+		<div class="module shell clearfix">
+			<div class="module half">
+				<h2>Status:</h2>
+				<span class="status" style="color: Green;">OPEN</span>
+			</div>
+			<div class="module half">
+				<button type="button" class="control">Open</button><br>
+				<button type="button" class="control">Close</button>
+			</div>
+		</div>
 
 
 
@@ -17,8 +34,7 @@
 
 
 <!-- This div redirects the user to navigate the site as needed -->
-  <div>
+  <div class="module">
   <a href = "login.html">Click here to head home and logout!</a>
   </div>
-  <br>
 </html>

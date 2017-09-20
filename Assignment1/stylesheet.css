@@ -9,30 +9,54 @@ h1, h2 {
 	font-style: italic;
 }
 
-div {
+.module {
 	background-color: #87CEEB;
 	text-align: center;
 	font-family: "Palatino Linotype";
 	border: 2px solid red;
 	border-radius: 20px;
+	box-sizing: border-box;
 	padding: 30px;
-	width: 30%;
-	height: 300%;
+	margin: 20px auto;
+	width: 100%;
+	max-width: 500px;
+	height: 100%;
 	display: block;
-	margin: auto;
 }
 
-input[type=text] {
-	border: 2px solid red;
-	border-radius: 4px;
+.shell {
+	background-color: transparent;
+	border: none;
+	border-radius: 0px;
+	padding: 0;
 }
 
-input[type=number] {
-	border: 2px solid red;
-	border-radius: 4px;
+.half {
+	float: left;
+	width: 46%;
+	margin: 0 2%;
+	min-height: 100%;
 }
 
-input[type=password] {
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.status {
+	line-height: 50px;
+	font-size: 28px;
+	font-family: "Palatino Linotype";
+	font-weight: 600;
+}
+
+.control {
+	height: 39px;
+	width: 100px;
+}
+
+input {
 	border: 2px solid red;
 	border-radius: 4px;
 }

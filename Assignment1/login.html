@@ -4,31 +4,28 @@
 	<head><title>CSE222 Assignment 1</title>
 		<link rel="stylesheet" type="text/css" href="stylesheet.css">
 	</head>
-	<body><br>
-		<div>
+	<body>
+		<div class="module">
 			<h1>Garage (Y)oor</h1>
 			<h2>Your Smart Garage Door</h2>
 		</div>
-		<br>
-		<form name="login" action"dashboard.html" method="post">
-		<div> <!-- This div has the main form. It will take in credentials and let a user log in. -->
+		<div class="module"> <!-- This div has the main form. It will take in credentials and let a user log in. -->
 		  Sign In -<br>
-			Username: <input type="text" name="username" id="currentuser" /><br>
-			Password: <input type="password" name="password" id="currentpass" /><br>
-			<input type="submit" name="signin" value="Sign In"/><br>
+		  	<form name="login" action="dashboard.html" method="post">
+				Username: <input type="text" name="username" id="currentuser" /><br>
+				Password: <input type="password" name="password" id="currentpass" /><br>
+				<input type="submit" name="signin" value="Sign In"/><br>
+			</form>
 		</div>
-		</form><br>
 
 <!-- This div redirects the user to navigate the site as needed -->
-  <div>
+  <div class="module">
   <a href = "recover.html">Click here to recover a lost password</a> <br>
   <a href = "create.html"> Click here to create an account</a>
   </div>
-  <br>
-
-		<div>
-			<p>Welcome to your smart garage door. All garage door needs will be done here!</p>
-			<p>Sign in above with your username and password. Or, if you are a new user, then sign up above!</p>
-		</div>
+	<div class="module">
+		<p>Welcome to your smart garage door. All garage door needs will be done here!</p>
+		<p>Sign in above with your username and password. Or, if you are a new user, then sign up above!</p>
+	</div>
 	</body>
 </html>

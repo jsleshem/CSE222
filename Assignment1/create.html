@@ -4,26 +4,24 @@
 	<head><title>CSE222 Assignment 1</title>
 		<link rel="stylesheet" type="text/css" href="stylesheet.css">
 	</head>
-	<body><br>
-		<div>
+	<body>
+		<div class="module">
 			<h1> Sign Up</h1>
-		</div><br>
-    <div> <!-- This div will prompt a new user for the necessary cridentials -->
+		</div>
+    <div class="module"> <!-- This div will prompt a new user for the necessary cridentials -->
 		<form name="signup" method="post">
 			<label for="newuser">New User - </label><br>
 			Username: <input type="text" name="newuser" id="newuser"/><br>
 			Password: <input type="password" name="newpass" id="newpass"/><br>
-      Phone Number: <input type="number" min = "0" max = "9999999999" name="newphone" id="newphone"/><br>
-      Garage ID number: <input type="number" min = "0" name="newID" id="newID"/><br>
+      		Phone Number: <input type="number" min = "0" max = "9999999999" name="newphone" id="newphone"/><br>
+      		Garage ID number: <input type="number" min = "0" name="newID" id="newID"/><br>
 			<input type="submit" name="signup" value="Sign Up"/><br>
 		</form>
-		</div>
-		<br>
+	</div>
 
-  <div> <!-- This div deals with page navigation -->
-  <a href = "recover.html">Click here to recover a lost password</a> <br>
-  <a href = "login.html"> Click here to head home if you already have an account</a>
+  <div class="module"> <!-- This div deals with page navigation -->
+	<a href = "recover.html">Click here to recover a lost password</a> <br>
+	<a href = "login.html"> Click here to head home if you already have an account</a>
   </div>
-  <br>
 	</body>
 </html>
