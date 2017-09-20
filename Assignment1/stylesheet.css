@@ -56,6 +56,10 @@ h1, h2 {
 	width: 100px;
 }
 
+.wide {
+	width: 200px;
+}
+
 input {
 	border: 2px solid red;
 	border-radius: 4px;
