@@ -35,16 +35,16 @@ h1, h2 {
 .half {
 	float: left;
 	margin: 0;
-	width: 48%;
+	width: 49%;
 	min-height: 100%;
 }
 
 .half.left {
-	margin-right: 2%;
+	margin-right: 1%;
 }
 
 .half.right {
-	margin-left: 2%;
+	margin-left: 1%;
 }
 
 .clearfix:after {
