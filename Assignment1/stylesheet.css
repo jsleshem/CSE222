@@ -33,9 +33,17 @@ h1, h2 {
 
 .half {
 	float: left;
-	width: 46%;
-	margin: 0 2%;
+	margin: 0;
+	width: 48%;
 	min-height: 100%;
+}
+
+.half.left {
+	margin-right: 2%;
+}
+
+.half.right {
+	margin-left: 2%;
 }
 
 .clearfix:after {
@@ -58,6 +66,18 @@ h1, h2 {
 
 .wide {
 	width: 200px;
+}
+
+.enableable {
+	display: inline;
+}
+
+.enable-box {
+	margin: 0 20px;
+}
+
+.notif-table {
+	margin: 0 auto;
 }
 
 input {

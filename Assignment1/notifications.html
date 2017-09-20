@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--  -->
+<html>
+	<head><title>CSE222 Assignment 1</title>
+		<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	</head>
+	<body>
+		<div class="module">
+			<h1>Notifications</h1>
+		</div>
+		<div class="module">
+		  <select class="control wide">
+			<option>Ethan's Garage Door</option>
+			<option>Jack's Garage Door</option>
+		  </select>
+		</div>
+		<div class="module">
+			<label for="notif-email">Email Address: </label><input type="text" name="notif-email" id="notif-email"/><br>
+			<label for="notif-phone">Phone Number: </label><input type="text" name="notif-phone" id="notif-phone"/><br><br>
+			<table class="notif-table">
+			  <tr>
+			    <th>Event</th>
+			    <th>Text</th>
+			    <th>Email</th>
+			  </tr>
+			  <tr>
+			    <td>Door Opens</td>
+			    <td><input type="checkbox"/></td>
+			    <td><input type="checkbox"/></td>
+			  </tr>
+			  <tr>
+			    <td>Door Closes</td>
+			    <td><input type="checkbox"/></td>
+			    <td><input type="checkbox"/></td>
+			  </tr>
+			  <tr>
+			    <td>Door Open Too Long</td>
+			    <td><input type="checkbox"/></td>
+			    <td><input type="checkbox"/></td>
+			  </tr>
+			</table>
+			<br>
+			How long is too long?<br>
+	    	<input type="number" name="notif-hour" id="notif-hour"/><label for="notif-hour"> Hours</label>
+	    	<input type="numer" name="notif-min" id="notif-min"/><label for="notif-min"> Minutes</label>
+			<br><br>
+			<button type="button">Save</button>
+		</div>
+		<div class="module">
+			<a href="dashboard.html">Back to Dashboard</a>
+		</div>
+	</body>
+</html>
