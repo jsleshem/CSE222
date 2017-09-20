@@ -9,17 +9,21 @@
 		<div class="module">
 			<h1>Automation</h1>
 		</div>
+
+		<!-- Select garage doors to automate -->
 		<div class="module">
 		  <select class="control wide">
 			<option>Ethan's Garage Door</option>
 			<option>Jack's Garage Door</option>
 		  </select>
 		</div>
-	    <div class="module"> <!-- This div will prompt a new user for the necessary cridentials -->
+
+		<!-- Enableable automation feature (Automatic Closing) -->
+	    <div class="module">
 	    	<input type="checkbox" class="enable-box"/><h2 class="enableable">Auto-Close</h2><br><br>
 	    	Door automatically closes after:<br><br>
 	    	<input type="number" name="close-hour" id="close-hour"/><label for="close-hour"> Hours</label>
-	    	<input type="numer" name="close-min" id="close-min"/><label for="close-min"> Minutes</label>
+	    	<input type="number" name="close-min" id="close-min" max="59"/><label for="close-min"> Minutes</label>
 		</div>
 		<div class="module">
 			<a href="dashboard.html">Back to Dashboard</a>
