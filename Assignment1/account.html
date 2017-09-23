@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--  -->
+<html>
+	<head><title>CSE222 Assignment 1</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	</head>
+	<body>
+		<div class="module">
+			<h1>Naming</h1>
+		</div>
+
+		<!-- Enableable changing of name -->
+	    <div class="module">
+	    	<h2>Rename</h2><br>
+	    	<select class="control wide">
+				<option>Ethan's Garage Door</option>
+				<option>Jack's Garage Door</option>
+		  	</select><br><br>
+	    	Change Name to:<br><br>
+	    	<input type="text" name="newName" id="newName" max="59"/><label for="close-min"></label>
+	    	<button type="button">Submit</button>
+		</div>
+		<div class="module">
+			<h2>Delete Garage</h2><br>
+			<select class="control wide">
+				<option>Ethan's Garage Door</option>
+				<option>Jack's Garage Door</option>
+		  	</select><br><br>
+		  <input type="checkbox" name="delete-confirm" id="delete-confirm"/><label for="delete-confirm"> I understand that this will delete this garage permanently.</label><br><br>
+		  <button type="button" id="delete">Delete</button>
+		</div>
+		<div class="module">
+			<a href="dashboard.html">Back to Dashboard</a>
+		</div>
+	</body>
+</html>
