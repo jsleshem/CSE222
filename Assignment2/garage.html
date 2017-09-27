@@ -16,7 +16,7 @@
 			Password: <input type="password" name="newpass" id="newpass"/><br>
 	  		Phone Number: <input type="number" min = "0" max = "9999999999" name="newphone" id="newphone"/><br>
 	  		Garage ID number: <input type="number" min = "0" name="newID" id="newID"/><br>
-			<button type="button" class="direct" name="dashboard">Sign Up</button><br>
+			<button type="button" id="signup">Sign Up</button><br>
 		</div>
 
 		  <div class="module"> <!-- This div deals with page navigation -->
@@ -24,6 +24,9 @@
 			<button type="button" class="direct" name="login"> Click here to head home if you already have an account</a>
 		</div>
 	</div>
+
+
+
 	<div class="page" id="login">
 		<div class="module">
 			<h1>Garage (Y)oor</h1>
@@ -34,7 +37,7 @@
 			Sign In -<br>
 			Username: <input type="text" name="username" id="currentuser" /><br>
 			Password: <input type="password" name="password" id="currentpass" /><br>
-			<button type="button" class="direct" name="dashboard">Login</button><br>
+			<button type="button" id="dologin">Login</button><br>
 		</div>
 		<!-- Account management -->
 	  <div class="module">
@@ -46,6 +49,9 @@
 			<p>Sign in above with your username and password. Or, if you are a new user, then sign up above!</p>
 		</div>
 	</div>
+
+
+
 	<div class="page" id="recover">
 		<div class="module">
 			<h1> Forgot Password</h1>
@@ -53,7 +59,7 @@
 		<div class="module"> <!-- This div has the main form. It will take in credentials and let a user recover their info. -->
 		  	Reset Password<br>
 			Email: <input type="text" name="username" id="currentuser" /><br>
-			<button type="button">Send</button><br>
+			<button type="button" id="sendemail">Send</button><br>
 		</div>
 
 		<!-- This div redirects the user to navigate the site as needed -->
@@ -62,18 +68,12 @@
 			<button type="button" class="direct" name="login">Click here to head home if you already have an account</button>
 		  </div>
 	</div>
+
+
+
 	<div class="page" id="dashboard">
 		<div class="module">
 			<h1>Dashboard</h1>
-		</div>
-
-		<!-- Select & add garage doors -->
-		<div class="module">
-		  <select class="control wide">
-			<option>Ethan's Garage Door</option>
-			<option>Jack's Garage Door</option>
-			<option>Add New...</option>
-		  </select>
 		</div>
 
 		<!-- Door status and controls -->
@@ -83,8 +83,8 @@
 				<span class="status" style="color: Green;">OPEN</span>
 			</div>
 			<div class="module half right">
-				<button type="button" class="control">Open</button><br>
-				<button type="button" class="control">Close</button>
+				<button type="button" class="control" id="open">Open</button><br>
+				<button type="button" class="control" id="close">Close</button>
 			</div>
 		</div>
 
@@ -99,47 +99,42 @@
 		<div class="module">
 			<button type="button" class="direct" name="login">Click here to head home and logout!</button>
 		</div>
+
+
+
 	</div>
 	<div class="page" id="account">
 		<div class="module">
 			<h1>Naming</h1>
 		</div>
 
+		<div class="module">
+			<h2 class="min-status">Status: </h2>
+			<span class="status" style="color: Green;">OPEN</span>
+		</div>
+
 		<!-- Enableable changing of name -->
 	    <div class="module">
 	    	<h2>Rename</h2><br>
-	    	<select class="control wide">
-				<option>Ethan's Garage Door</option>
-				<option>Jack's Garage Door</option>
-		  	</select><br><br>
 	    	Change Name to:<br><br>
 	    	<input type="text" name="newName" id="newName" max="59"/><label for="close-min"></label>
 	    	<button type="button">Submit</button>
 		</div>
 		<div class="module">
-			<h2>Delete Garage</h2><br>
-			<select class="control wide">
-				<option>Ethan's Garage Door</option>
-				<option>Jack's Garage Door</option>
-		  	</select><br><br>
-		  <input type="checkbox" name="delete-confirm" id="delete-confirm"/><label for="delete-confirm"> I understand that this will delete this garage permanently.</label><br><br>
-		  <button type="button" id="delete">Delete</button>
-		</div>
-		<div class="module">
 			<button type="button" class="direct" name="dashboard">Back to Dashboard</button>
 		</div>
 	</div>
+
+
+
 	<div class="page" id="automation">
 		<div class="module">
 			<h1>Automation</h1>
 		</div>
 
-		<!-- Select garage doors to automate -->
 		<div class="module">
-		  <select class="control wide">
-			<option>Ethan's Garage Door</option>
-			<option>Jack's Garage Door</option>
-		  </select>
+			<h2 class="min-status">Status:</h2>
+			<span class="status" style="color: Green;">OPEN</span>
 		</div>
 
 		<!-- Enableable automation feature (Automatic Closing) -->
@@ -153,17 +148,17 @@
 			<button type="button" class="direct" name="dashboard">Back to Dashboard</button>
 		</div>
 	</div>
+
+
+
 	<div class="page" id="notifications">
 		<div class="module">
 			<h1>Notifications</h1>
 		</div>
 
-		<!-- Select garage doors to get notifications for -->
 		<div class="module">
-		  <select class="control wide">
-			<option>Ethan's Garage Door</option>
-			<option>Jack's Garage Door</option>
-		  </select>
+			<h2 class="min-status">Status:</h2>
+			<span class="status" style="color: Green;">OPEN</span>
 		</div>
 
 		<!-- Enter your contact information for receiving notifications -->
