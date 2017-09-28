@@ -1,8 +1,9 @@
 // User model
-function user(username, password, phone, gid) {
+function user(username, password, phone, name, gid) {
 	this.username = username;
 	this.password = password;
 	this.phone = phone;
+	this.name = name;
 	this.gid = gid;
 	this.status = false;
 }
@@ -11,8 +12,8 @@ function user(username, password, phone, gid) {
 
 // Init database, add two default users
 var users = [];
-users.push(new user("Ethan", "pass1", "123", "1010"));
-var p = new user("Jack", "pass2", "321", "9999");
+users.push(new user("Ethan", "pass1", "123", "Garage1", "1010"));
+var p = new user("Jack", "pass2", "321", "Garage2", "9999");
 p.status = true;
 users.push(p);
 
@@ -64,8 +65,9 @@ document.getElementById("sendemail").addEventListener("click", function () {
 )
 
 document.getElementById("rename").addEventListener("click", function () {
-		document.getElementById("garageName").innerHTML = document.getElementById("newGarageName").value;
+		currentUser.name = document.getElementById("newGarageName").value;
 		document.getElementById("newGarageName").value = "";
+		document.getElementById("garageName").innerHTML = currentUser.name;
 	}
 )
 
@@ -83,6 +85,8 @@ document.getElementById("dologin").addEventListener("click", function () {
 				}
 				document.getElementById("open").disabled = isOpen ? true : false;
 				document.getElementById("close").disabled = isOpen ? false : true;
+
+				document.getElementById("garageName").innerHTML = currentUser.name;
 
 				showPage("dashboard");
 				return;

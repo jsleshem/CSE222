@@ -15,6 +15,7 @@
 			Username: <input type="text" name="newuser" id="newuser"/><br>
 			Password: <input type="password" name="newpass" id="newpass"/><br>
 	  		Phone Number: <input type="number" min = "0" max = "9999999999" name="newphone" id="newphone"/><br>
+	  		Garage Name: <input type="text" name="newname" id="newname"/><br>
 	  		Garage ID number: <input type="number" min = "0" name="newID" id="newID"/><br>
 			<button type="button" id="signup">Sign Up</button><br>
 		</div>
@@ -115,13 +116,13 @@
 
 		<!-- Enableable changing of name -->
 		<div class ="module">
-		<h2>Curent Name</h2>
-		<h3 id="garageName">My Garage</h3>
+		<h2>Curent Name:</h2>
+		<h3 id="garageName"></h3>
 		</div>
 	    <div class="module">
 	    	<h2>Rename</h2><br>
 	    	Change Name to:<br><br>
-	    	<input type="text" name="newGarageName" id="newGarageName" max="59"/><label for="close-min"></label>
+	    	<input type="text" name="newGarageName" id="newGarageName" max="59"/>
 	    	<button type="button" id="rename">Submit</button>
 		</div>
 		<div class="module">
