@@ -50,8 +50,9 @@ document.getElementById("signup").addEventListener("click", function() {
 		var username = document.getElementById("newuser").value;
 		var password = document.getElementById("newpass").value;
 		var phone = document.getElementById("newphone").value;
+		var name = document.getElementById("newname").value;
 		var gid = document.getElementById("newID").value;
-		var newUser = new user(username, password, phone, gid);
+		var newUser = new user(username, password, phone, name, gid);
 		users.push(newUser);
 		currentUser = newUser;
 		showPage("dashboard");
