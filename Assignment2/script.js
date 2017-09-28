@@ -63,6 +63,12 @@ document.getElementById("sendemail").addEventListener("click", function () {
 	}
 )
 
+document.getElementById("rename").addEventListener("click", function () {
+		document.getElementById("garageName").innerHTML = document.getElementById("newGarageName").value;
+		document.getElementById("newGarageName").value = "";
+	}
+)
+
 document.getElementById("dologin").addEventListener("click", function () {
 		var username = document.getElementById("currentuser").value;
 		var password = document.getElementById("currentpass").value;
@@ -121,6 +127,10 @@ document.getElementById("close").addEventListener("click",function () {
 			currentUser.status = !currentUser.status;
 		}
 	}
+	
+
+
+	
 )
 
 // Default view
