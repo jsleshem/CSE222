@@ -1,0 +1,103 @@
+body {
+	background-color: #4682b4;
+}
+
+h1, h2 {
+	display: block;
+	margin: auto;
+	text-shadow: 2px 2px 8px  grey;
+	font-style: italic;
+}
+
+.module {
+	background-color: #87CEEB;
+	text-align: center;
+	font-family: "Palatino Linotype";
+	border: 2px solid red;
+	border-radius: 20px;
+	box-sizing: border-box;
+	padding: 30px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	width: 100%;
+	max-width: 500px;
+	height: 100%;
+	display: block;
+}
+
+.shell {
+	background-color: transparent;
+	border: none;
+	border-radius: 0px;
+	padding: 0;
+}
+
+.half {
+	float: left;
+	margin: 0;
+	width: 49%;
+	min-height: 100%;
+}
+
+.half.left {
+	margin-right: 1%;
+}
+
+.half.right {
+	margin-left: 1%;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.status {
+	line-height: 50px;
+	font-size: 28px;
+	font-family: "Palatino Linotype";
+	font-weight: 600;
+}
+
+.control {
+	height: 39px;
+	width: 100px;
+}
+
+.mid {
+	width: 133px;
+}
+
+.wide {
+	width: 200px;
+}
+
+.enableable {
+	display: inline;
+}
+
+.enable-box {
+	margin: 0 20px;
+}
+
+.min-status {
+	display: inline;
+	margin-right: 10px;
+}
+
+.notif-table {
+	margin: 0 auto;
+}
+
+input {
+	border: 2px solid red;
+	border-radius: 4px;
+}
+
+input[type=submit] {
+	background-color: white;
+	border: 1px solid black;
+	border-radius: 4px;
+	cursor: pointer;
+}
