@@ -95,6 +95,10 @@ input {
 	border-radius: 4px;
 }
 
+input[type=number] {
+	width: 50px;
+}
+
 input[type=submit] {
 	background-color: white;
 	border: 1px solid black;

@@ -6,6 +6,8 @@ function user(username, password, phone, name, gid) {
 	this.name = name;
 	this.gid = gid;
 	this.status = 0;
+	this.autoClose = false;
+	this.autoCloseTime = 0;
 }
 
 // FOR STATUS: TRUE IS OPEN, FALSE IS CLOSED
@@ -47,16 +49,32 @@ function showPage(id) {
 
 var particle = new Particle();
 var token;
+var openedTimer;
 
 var login = 'ethandjay@gmail.com';
 var password = 'Kronos97!';
 var deviceId = '27001f001951353337343731';  // Comes from the number in the particle.io Console
 
-
 // Call back function for login success/failure
 function loginSuccess(data) {
     console.log('API call completed on promise resolve: ', data.body.access_token);
     token = data.body.access_token;
+
+	particle.getEventStream({ deviceId: 'mine', auth: token }).then(function(stream) {
+	  stream.on('state-change', function(data) {
+	  	console.log(data);
+	  	currentUser.status = data.data;
+	  	setStatusofUI();
+	  	if (openedTimer) {
+	  		clearTimeout(openedTimer);
+	  	}
+		if(currentUser.autoClose && currentUser.status == 0) {
+			openedTimer = setTimeout( function() {
+				particle.callFunction({ deviceId: deviceId, name: 'buttonPress', argument: "", auth: token }).then(callSuccess, callFailure);
+			}, currentUser.autoCloseTime);
+		}
+	  });
+	});
 }
 
 function loginError(error) {
@@ -87,13 +105,18 @@ function getStatus() {
 
 function setStatusofUI() {
 	var status = currentUser.status;
+	status = parseInt(currentUser.status);
+	if (openedTimer){
+		clearInterval(openedTimer);
+	}
 
 	for (let p of document.getElementsByClassName("control")){
 		p.disabled = false;
 	}
 
+	console.log("Status is " + status);
 	for (let p of document.getElementsByClassName("status")) {
-		console.log("Status is" + status);
+		
 		switch(status){
 		case 0:
 			p.style.color = "Green";
@@ -159,6 +182,17 @@ document.getElementById("rename").addEventListener("click", function () {
 	}
 )
 
+document.getElementById("auto-close-check").addEventListener("click", function () {
+		currentUser.autoClose = !currentUser.autoClose;
+		currentUser.autoCloseTime = document.getElementById("close-sec").value * 1000;
+		if(currentUser.autoClose) {
+			setTimeout( function() {
+				particle.callFunction({ deviceId: deviceId, name: 'buttonPress', argument: "", auth: token }).then(callSuccess, callFailure);
+			}, currentUser.autoCloseTime);
+		}
+	}
+)
+
 document.getElementById("dologin").addEventListener("click", function () {
 		var username = document.getElementById("currentuser").value;
 		var password = document.getElementById("currentpass").value;
@@ -167,9 +201,9 @@ document.getElementById("dologin").addEventListener("click", function () {
 				currentUser = user;
 
 				getStatus();
-				setInterval(function() { getStatus(); }, 1000);
 
 				document.getElementById("garageName").innerHTML = currentUser.name;
+				document.getElementById("auto-close-check").checked = currentUser.autoClose;
 
 				showPage("dashboard");
 				return;
