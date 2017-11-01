@@ -184,8 +184,15 @@ document.getElementById("rename").addEventListener("click", function () {
 
 document.getElementById("auto-close-check").addEventListener("click", function () {
 		currentUser.autoClose = !currentUser.autoClose;
-		currentUser.autoCloseTime = document.getElementById("close-sec").value * 1000;
-		if(currentUser.autoClose) {
+
+		if (currentUser.autoClose && document.getElementById("close-sec").value) {
+			currentUser.autoCloseTime = document.getElementById("close-sec").value * 1000;
+		} else if (currentUser.autoClose) {
+			document.getElementById("close-sec").value = 5;
+			currentUser.autoCloseTime = 5000;
+		}
+		
+		if(currentUser.autoClose && currentUser.status == 0) {
 			setTimeout( function() {
 				particle.callFunction({ deviceId: deviceId, name: 'buttonPress', argument: "", auth: token }).then(callSuccess, callFailure);
 			}, currentUser.autoCloseTime);
