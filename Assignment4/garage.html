@@ -147,10 +147,10 @@
 	    <div class="module">
 	    	<input type="checkbox" class="enable-box" id="auto-close-check"/><h2 class="enableable">Auto-Close</h2><br><br>
 	    	Door automatically closes after:<br><br>
-	    	<input type="number" name="close-hour" id="close-hour"/><label for="close-hour"> Hours</label>
-	    	<input type="number" name="close-min" id="close-min" max="59"/><label for="close-min"> Minutes
+	    	<input type="number" class="close" name="close-hour" id="close-hour" max="59" min="0"/><label for="close-hour"> Hours</label>
+	    	<input type="number" class="close" name="close-min" id="close-min" max="59" min="0"/><label for="close-min"> Minutes
 	    	</label>
-	    	<input type="number" name="close-sec" id="close-sec" max="59"/><label for="close-sec"> Seconds
+	    	<input type="number" class="close" name="close-sec" id="close-sec" max="59" min="0"/><label for="close-sec"> Seconds
 		</div>
 		<div class="module">
 			<button type="button" class="direct" name="dashboard">Back to Dashboard</button>

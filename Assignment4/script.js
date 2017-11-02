@@ -220,6 +220,18 @@ document.getElementById("dologin").addEventListener("click", function () {
 	}
 )
 
+
+	for (let p of document.getElementsByClassName("close")){
+		p.addEventListener("keyup", function () {
+			if (p.value && (p.value > 59 || p.value < 0)){
+				document.getElementById("auto-close-check").disabled = true;
+			} else {
+				document.getElementById("auto-close-check").disabled = false;
+			}
+		}
+		)
+	}
+
 document.getElementById("button").addEventListener("click", function() {
 	particle.callFunction({ deviceId: deviceId, name: 'buttonPress', argument: "", auth: token }).then(callSuccess, callFailure);
 });
