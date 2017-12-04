@@ -51,32 +51,33 @@ var particle = new Particle();
 var token;
 var openedTimer;
 
-var login = 'ethandjay@gmail.com';
-var password = 'Kronos97!';
+var particleLogin = 'ethandjay@gmail.com';
+var particlePassword = 'Kronos97!';
 var deviceId = '27001f001951353337343731';  // Comes from the number in the particle.io Console
+
+function sendAutoCloseState() {
+	if (currentUser.autoClose) {
+		particle.callFunction({ deviceId: deviceId, name: 'autoCloseSet', argument: String(currentUser.autoCloseTime), auth: token }).then(callSuccess, callFailure);
+	} else {
+		particle.callFunction({ deviceId: deviceId, name: 'autoCloseSet', argument: "FALSE", auth: token }).then(callSuccess, callFailure);
+	}
+}
 
 // Call back function for login success/failure
 function loginSuccess(data) {
     console.log('API call completed on promise resolve: ', data.body.access_token);
     token = data.body.access_token;
 
-	particle.getEventStream({ deviceId: 'mine', auth: token }).then(function(stream) {
+    particle.getEventStream({ deviceId: 'mine', auth: token }).then(function(stream) {
 	  stream.on('state-change', function(data) {
 	  	console.log(data);
 	  	currentUser.status = data.data;
 	  	setStatusofUI();
-	  	if (openedTimer) {
-	  		clearTimeout(openedTimer);
-	  	}
-		if(currentUser.autoClose && currentUser.status == 0) {
-			// openedTimer = setTimeout( function() {
-			// 	particle.callFunction({ deviceId: deviceId, name: 'buttonPress', argument: "", auth: token }).then(callSuccess, callFailure);
-			// }, currentUser.autoCloseTime);
-
-			particle.callFunction({ deviceId: deviceId, name: 'autoClose', argument: str(currentUser.autoCloseTime), auth: token }).then(callSuccess, callFailure);
-		}
 	  });
 	});
+
+	sendAutoCloseState();
+	getStatus();
 }
 
 function loginError(error) {
@@ -84,7 +85,7 @@ function loginError(error) {
 }
 
 // Try to login
-particle.login({username: login, password:password}).then(loginSuccess, loginError);
+// particle.login({username: login, password:password}).then(loginSuccess, loginError);
 
 function callSuccess(data) {
     console.log('Function called succesfully:', data);
@@ -104,6 +105,7 @@ function getStatus() {
 	console.log("hi");
 }
 
+// Set UI to represent state of garage
 
 function setStatusofUI() {
 	var status = currentUser.status;
@@ -158,25 +160,37 @@ for (let link of links) {
 	)
 }
 
+// Sign up button event, creates account and claims devices
 document.getElementById("signup").addEventListener("click", function() {
-		var username = document.getElementById("newuser").value;
+		var email = document.getElementById("newuser").value;
 		var password = document.getElementById("newpass").value;
-		var phone = document.getElementById("newphone").value;
-		var name = document.getElementById("newname").value;
-		var gid = document.getElementById("newID").value;
-		var newUser = new user(username, password, phone, name, gid);
-		users.push(newUser);
-		currentUser = newUser;
-		showPage("dashboard");
+		var newUser = new user(email, password, 0, "name", 0);
+
+
+		particle.createCustomer = function ({ productId, clientId, clientToken, customerEmail, customerPassword }) {
+			 const auth = clientId + ':' + clientToken;
+			 const uri = `/v1/products/${productId}/customers`;
+			 return this.post(uri, {productIdOrSlug:productId, client_id:clientId, client_secret:clientToken, email:customerEmail, password:customerPassword
+			 }, auth, this.context);
+		}
+
+		particle.createCustomer( {productId:productId, clientId:clientId, clientToken:clientToken, customerEmail:email, customerPassword:password} )
+		 .then(saveTokenAndClaimDeviceOne)
+		 .then(claimDeviceTwo)
+		 .then(function() { doneClaimingDevices(newUser); })
+		 .catch(errorClaimingDevices)
+
 	}
 )
 
+// Password reset event
 document.getElementById("sendemail").addEventListener("click", function () {
 		// WOW, super clean way to generate random characters, thanks https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
 		alert("Your new password is " + Math.random().toString(36).substring(4));
 	}
 )
 
+// Renames garage
 document.getElementById("rename").addEventListener("click", function () {
 		currentUser.name = document.getElementById("newGarageName").value;
 		document.getElementById("newGarageName").value = "";
@@ -184,6 +198,7 @@ document.getElementById("rename").addEventListener("click", function () {
 	}
 )
 
+// AutoClose checkbox action
 document.getElementById("auto-close-check").addEventListener("click", function () {
 		currentUser.autoClose = !currentUser.autoClose;
 
@@ -193,15 +208,12 @@ document.getElementById("auto-close-check").addEventListener("click", function (
 			document.getElementById("close-sec").value = 5;
 			currentUser.autoCloseTime = 5000;
 		}
-		
-		if(currentUser.autoClose && currentUser.status == 0) {
-			setTimeout( function() {
-				particle.callFunction({ deviceId: deviceId, name: 'buttonPress', argument: "", auth: token }).then(callSuccess, callFailure);
-			}, currentUser.autoCloseTime);
-		}
+
+		sendAutoCloseState();
 	}
 )
 
+// Login button action
 document.getElementById("dologin").addEventListener("click", function () {
 		var username = document.getElementById("currentuser").value;
 		var password = document.getElementById("currentpass").value;
@@ -209,7 +221,8 @@ document.getElementById("dologin").addEventListener("click", function () {
 			if (user.username = username && user.password == password){
 				currentUser = user;
 
-				getStatus();
+				console.log(login + " " + password);
+				particle.login({username: particleLogin, password:particlePassword}).then(loginSuccess, loginError);
 
 				document.getElementById("garageName").innerHTML = currentUser.name;
 				document.getElementById("auto-close-check").checked = currentUser.autoClose;
@@ -234,6 +247,7 @@ document.getElementById("dologin").addEventListener("click", function () {
 		)
 	}
 
+// Garage button action
 document.getElementById("button").addEventListener("click", function() {
 	particle.callFunction({ deviceId: deviceId, name: 'buttonPress', argument: "", auth: token }).then(callSuccess, callFailure);
 });
