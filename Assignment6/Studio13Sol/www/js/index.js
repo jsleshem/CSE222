@@ -84,9 +84,6 @@ function loginError(error) {
     console.log('API call completed on promise fail: ', error);
 }
 
-// Try to login
-// particle.login({username: login, password:password}).then(loginSuccess, loginError);
-
 function callSuccess(data) {
     console.log('Function called succesfully:', data);
 }
@@ -158,6 +155,47 @@ for (let link of links) {
 			showPage(link.name);
 		}
 	)
+}
+
+
+
+
+// Helpers for signup
+
+var productId = "6238";
+
+var clientId = "garage-door-app-2719";
+var clientToken = "3d6660ac010f48513147d74f72e090240829c79e";
+
+var deviceOneId = "27001f001951353337343731";
+var deviceTwoId = "2f0049000c47343438323536";
+var customerToken = "LEAVE ALONE";
+
+function saveTokenAndClaimDeviceOne(data) {
+ console.log("Success creating customer; Claiming Device One");
+ console.dir(data)
+ customerToken = data.body.access_token;
+ // Return a "promise" object (so .then() can be used)
+ return particle.claimDevice({deviceId:deviceOneId, requestTransfer:true, auth:customerToken})
+}
+
+function claimDeviceTwo(data) {
+ console.log("Success claiming device one; Claiming Device Two");
+ console.dir(data)
+ // Return a "promise" object (so .then() can be used)
+ return particle.claimDevice({deviceId:deviceTwoId, requestTransfer:true, auth:customerToken})
+}
+
+function doneClaimingDevices(newUser) {
+ 	console.log("Done Claiming Devices");
+	users.push(newUser);
+	currentUser = newUser;
+	particle.login({username: newUser.username, password: newUser.password}).then(loginSuccess, loginError);
+	showPage("dashboard");
+}
+
+function errorClaimingDevices() {
+ console.log("Error Claiming Devices");
 }
 
 // Sign up button event, creates account and claims devices
